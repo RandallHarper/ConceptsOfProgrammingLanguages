@@ -1,0 +1,10 @@
+;Randall Harper 5/6/2016
+;return a list containing all elements of a given list
+;that satisfy a given predicate.
+;use (filter (lambda (x) (< x 5)) '(3 9 5 8 2 4 7)) should return (3 2 4)
+
+(define (filter pred list)						;definition
+  (cond ((null? list) '())						;if null list, then use empty list
+    ((pred (car list))							;calculate boolean value on first list item
+     (cons (car list)(filter pred(cdr list))))	;if true, add to list and continue to next item
+    (else (filter pred (cdr list)))))			;else move to next item

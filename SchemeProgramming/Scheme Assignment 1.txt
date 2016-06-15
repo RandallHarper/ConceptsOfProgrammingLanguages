@@ -1,0 +1,13 @@
+;Randall Harper 5/6/2016
+;return all rotations of a given list.
+;use (rotate '(a b c d e)) should return ((e a b c d) (d e a b c) (c d e a b) (b c d e a) (a b c d e))
+
+
+(define (rotate L)											;definition
+  (define (rotateAgain L rotations acc)						;rotate loop
+    (cond													;condition
+      ((= rotations 0) (reverse acc))						;if last rotation reverse
+      (else (rotateAgain (append (cdr L) (list (car L))) 	;rotate loop append cdr L to list car L
+                          (- rotations 1) 					;rotations--
+                          (cons L acc)))))					;put L in acc
+  (rotateAgain L (length L) null?))							;initial values
